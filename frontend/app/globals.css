@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: radial-gradient(circle at top, #201860 0%, #050713 60%);
+  color: white;
+}
+
+.gradient-overlay {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(99, 242, 255, 0.15), transparent 45%),
+    radial-gradient(circle at 80% 10%, rgba(92, 36, 255, 0.25), transparent 50%),
+    radial-gradient(circle at 70% 70%, rgba(0, 114, 255, 0.12), transparent 45%);
+  pointer-events: none;
+  z-index: 0;
+}

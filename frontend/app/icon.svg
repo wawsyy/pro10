@@ -1,0 +1,17 @@
+<svg width="96" height="96" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Age Gate Icon">
+  <defs>
+    <linearGradient id="shieldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1c1b7a"/>
+      <stop offset="100%" stop-color="#5de0e6"/>
+    </linearGradient>
+    <linearGradient id="checkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#d2f8ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="96" height="96" rx="24" fill="#050713"/>
+  <path d="M48 14L22 24v22c0 17.6 11.8 33.8 26 36 14.2-2.2 26-18.4 26-36V24L48 14z" fill="url(#shieldGradient)"/>
+  <path d="M36 48l8 8 16-16" stroke="url(#checkGradient)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <circle cx="48" cy="48" r="34" stroke="rgba(255,255,255,0.25)" stroke-width="2" fill="none"/>
+</svg>
+

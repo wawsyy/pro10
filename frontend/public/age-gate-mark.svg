@@ -1,0 +1,23 @@
+<svg width="192" height="48" viewBox="0 0 192 48" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="CipherGate Logo">
+  <defs>
+    <linearGradient id="brandStroke" x1="0%" y1="0%" x2="120%" y2="120%">
+      <stop offset="0%" stop-color="#63f2ff"/>
+      <stop offset="100%" stop-color="#5c24ff"/>
+    </linearGradient>
+    <linearGradient id="brandFill" x1="0%" y1="0%" x2="100%" y2="80%">
+      <stop offset="0%" stop-color="#0d0b1a"/>
+      <stop offset="100%" stop-color="#1b1450"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" stroke="url(#brandStroke)" stroke-width="2">
+    <path fill="url(#brandFill)" d="M18 4L6 9.2v10.4c0 10.6 7.2 20.4 12 22.4 4.8-2 12-11.8 12-22.4V9.2L18 4z"/>
+    <path d="M11.5 24l5.7 5.8L25 22" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="48" y="32" font-family="Segoe UI, Inter, system-ui" font-size="20" font-weight="600" fill="white" letter-spacing="0.04em">
+    CipherGate Labs
+  </text>
+  <text x="48" y="43" font-family="Segoe UI, Inter, system-ui" font-size="10" fill="#9aa2ff" letter-spacing="0.3em">
+    ENCRYPTED AGE CLEARANCE
+  </text>
+</svg>
+
