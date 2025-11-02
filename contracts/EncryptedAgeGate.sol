@@ -5,8 +5,10 @@
 pragma solidity ^0.8.24;
 
 
+
 import {FHE, ebool, euint8, euint32, externalEuint8} from "@fhevm/solidity/lib/FHE.sol";
 import {SepoliaConfig} from "@fhevm/solidity/config/ZamaConfig.sol";
+
 
 
 /// @title EncryptedAgeGate
@@ -15,16 +17,20 @@ contract EncryptedAgeGate is SepoliaConfig {
     uint8 public constant MINIMUM_ADULT_AGE = 18;
 
 
+
     mapping(address => euint8) private _latestEncryptedAge;
     mapping(address => ebool) private _latestDecision;
+
 
 
     euint32 private _adultSubmissions;
     euint32 private _minorSubmissions;
 
 
+
     event AgeSubmitted(address indexed user, ebool encryptedIsAdult);
     event StatsAccessGranted(address indexed grantedBy, address indexed viewer);
+
 
 
     /// @notice Sends an encrypted age to the contract and receives an encrypted majority decision.
@@ -35,8 +41,10 @@ contract EncryptedAgeGate is SepoliaConfig {
         ebool isAdult = FHE.ge(age, FHE.asEuint8(MINIMUM_ADULT_AGE));
 
 
+
         _latestEncryptedAge[msg.sender] = age;
         _latestDecision[msg.sender] = isAdult;
+
 
 
         euint32 adultIncrement = FHE.select(isAdult, FHE.asEuint32(1), FHE.asEuint32(0));
@@ -44,16 +52,20 @@ contract EncryptedAgeGate is SepoliaConfig {
         euint32 minorIncrement = FHE.select(isMinor, FHE.asEuint32(1), FHE.asEuint32(0));
 
 
+
         _adultSubmissions = FHE.add(_adultSubmissions, adultIncrement);
         _minorSubmissions = FHE.add(_minorSubmissions, minorIncrement);
+
 
 
         _allowPersonalInsights(msg.sender);
         _allowStats(msg.sender);
 
 
+
         emit AgeSubmitted(msg.sender, isAdult);
     }
+
 
 
     /// @notice Allows any operator to share encrypted stats with a target user.
@@ -64,10 +76,12 @@ contract EncryptedAgeGate is SepoliaConfig {
     }
 
 
+
     /// @notice Returns the encrypted age that the user submitted last.
     function getLatestAge(address user) external view returns (euint8) {
         return _latestEncryptedAge[user];
     }
+
 
 
     /// @notice Returns the encrypted majority decision for the user.
@@ -76,16 +90,19 @@ contract EncryptedAgeGate is SepoliaConfig {
     }
 
 
+
     /// @notice Returns the encrypted number of submissions that passed the >= 18 check.
     function getAdultSubmissions() external view returns (euint32) {
         return _adultSubmissions;
     }
 
 
+
     /// @notice Returns the encrypted number of submissions that were flagged as minors.
     function getMinorSubmissions() external view returns (euint32) {
         return _minorSubmissions;
     }
+
 
 
     function _allowPersonalInsights(address user) private {
@@ -96,6 +113,7 @@ contract EncryptedAgeGate is SepoliaConfig {
     }
 
 
+
     function _allowStats(address user) private {
         FHE.allow(_adultSubmissions, user);
         FHE.allow(_minorSubmissions, user);
@@ -103,5 +121,6 @@ contract EncryptedAgeGate is SepoliaConfig {
         FHE.allowThis(_minorSubmissions);
     }
 }
+
 
 
