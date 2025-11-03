@@ -1,3 +1,4 @@
+﻿// Updated: 2025-11-03 16:30:03
 import { FhevmType } from "@fhevm/hardhat-plugin";
 import { task } from "hardhat/config";
 import type { TaskArguments } from "hardhat/types";
