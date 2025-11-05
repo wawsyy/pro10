@@ -1,4 +1,4 @@
-# FHEVM Hardhat Template
+﻿# FHEVM Hardhat Template
 
 A FHEVM Hardhat-based template for developing Solidity smart contracts.
 
