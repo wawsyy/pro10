@@ -1,3 +1,4 @@
+﻿// Updated: 2025-11-06 13:50:14
 "use client";
 
 import Image from "next/image";
