@@ -1,3 +1,4 @@
+﻿// Updated: 2025-11-06 11:21:46
 import "@fhevm/hardhat-plugin";
 import "@nomicfoundation/hardhat-chai-matchers";
 import "@nomicfoundation/hardhat-ethers";
