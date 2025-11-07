@@ -1,7 +1,7 @@
 {
     "name":  "fhevm-hardhat-template",
     "description":  "Hardhat-based template for developing FHEVM Solidity smart contracts",
-     $v = $matches[2] -split '\.'; $p = [int]$v[2] + 1; "$($matches[1])$($v[0]).$($v[1]).$p$($matches[3])" ,
+    "version":  "0.0.1",
     "engines":  {
                     "node":  "\u003e=20",
                     "npm":  "\u003e=7.0.0"
