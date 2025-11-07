@@ -233,14 +233,15 @@ export function AgeVerificationExperience() {
         await refreshHandles();
         setMessage("Submission confirmed. You can now decrypt.");
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error(err);
-      if (err?.cause?.code === 4001 || err?.code === "ACTION_REJECTED" || err?.message?.includes("rejected") || err?.message?.includes("denied")) {
+      const error = err as { cause?: { code?: number }; code?: string; message?: string; shortMessage?: string };
+      if (error?.cause?.code === 4001 || error?.code === "ACTION_REJECTED" || error?.message?.includes("rejected") || error?.message?.includes("denied")) {
         setMessage("Transaction was rejected. Please click 'Encrypt & Submit' again and approve the transaction in MetaMask.");
-      } else if (err?.message?.includes("revert") || err?.message?.includes("execution reverted")) {
-        setMessage(`Contract execution failed: ${err?.shortMessage || err?.message}. On Sepolia, ensure FHEVM Relayer is properly configured.`);
+      } else if (error?.message?.includes("revert") || error?.message?.includes("execution reverted")) {
+        setMessage(`Contract execution failed: ${error?.shortMessage || error?.message}. On Sepolia, ensure FHEVM Relayer is properly configured.`);
       } else {
-        setMessage(`Submission failed: ${err?.shortMessage || err?.message || "Unknown error"}. Check console for details.`);
+        setMessage(`Submission failed: ${error?.shortMessage || error?.message || "Unknown error"}. Check console for details.`);
         if (chainId === 11155111) {
           setMessage(`Sepolia submission failed. Ensure Relayer SDK is configured correctly and your wallet has Sepolia ETH.`);
         }
@@ -384,12 +385,13 @@ export function AgeVerificationExperience() {
         chain: walletClient.chain,
       });
       setMessage(`Stats can now be decrypted by ${shareAddress}.`);
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error(err);
-      if (err?.cause?.code === 4001 || err?.code === "ACTION_REJECTED" || err?.message?.includes("rejected") || err?.message?.includes("denied")) {
+      const error = err as { cause?: { code?: number }; code?: string; message?: string; shortMessage?: string };
+      if (error?.cause?.code === 4001 || error?.code === "ACTION_REJECTED" || error?.message?.includes("rejected") || error?.message?.includes("denied")) {
         setMessage("Transaction was rejected. Please try again and approve the transaction in MetaMask.");
       } else {
-        setMessage(`Failed to grant stats access: ${err?.shortMessage || err?.message || "Unknown error"}.`);
+        setMessage(`Failed to grant stats access: ${error?.shortMessage || error?.message || "Unknown error"}.`);
       }
     } finally {
       setSharing(false);
